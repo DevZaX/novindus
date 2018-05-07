@@ -1,0 +1,1 @@
+ACC.homeactions={"bindAll":function(){ACC.homeactions.closepreheader()},"closepreheader":function(){$(".notification-bar--close").click(function(){$(".notification-bar").hide(),$.cookie("preheader","false")})}},$(document).ready(function(){ACC.homeactions.bindAll()});

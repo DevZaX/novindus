@@ -1,0 +1,70 @@
+partie devloppement d'application android
+
+outils de travailles 
+
+android studio : est un environnement de développement pour développer des applications Android. Il est basé sur IntelliJ IDEA.
+
+un serveur distant de la societe eb2a : eb2a est une societe d'hebergement offre des services gratuits mais pas permanant pour heberge des sites web ou des applications dans une durée de 12mois
+
+devloppement:
+
+la partie devloppement se deroule en 3 parties
+
+
+1*devlopper une application web avec html et javascript pour tout ce qui est  interface graphique et programmation
+
+2*devlopper une script php pour la communication avec la base de donnee
+
+3*devloppement l'interface mobile  a l'aide  du composant webview
+
+c'est la composant charger d'afficher les applications web dans une zone precis dans une apps mobile
+
+pour plus des informations visiter ce lien 
+https://developer.android.com/reference/android/webkit/WebView.html
+
+la communication entre arduino et l'application mobile se fait par l'application web 
+
+qui recois les donnees depuis arduino et va les stocker dans une base de donnees 
+puis il envoie ces donnes au composant webview du application mobile 
+
+
+
+expliquation de code 
+
+
+
+pour la partie mobile en utilisant le composant webview 
+
+en anstancie l'objet webview = new WebView(this);
+
+puis en affiche l'application web a l'aide de la fonction loadURl
+
+webview.loadURl(url);
+
+url c'est l'adresse de l'application web dans internet
+setjavascriptEnabled consiste a activer la lecture des codes javascript dans l'apps mobile 
+
+
+la partie communication avec la base de donnee se fait a l'aide du langage php
+
+pour ouvrir la connexion nous utilisons la fonction 
+$conn = mysqli_connect($servername, $username, $password,$dbname);
+
+pour lire les info recu du application arduino $data = $_POST["data"];
+
+puis en l'inserer dans la base de donnee $conn->query("insert into gaz values(null,$data)")
+
+pour lire le niveau de gaz en execute une requet comme ce ci "select * from gaz "
+puis en transforme la resultat sous format d'un tableau des objets JSON a l'aide de la fonction 
+ json_encode
+ 
+ 
+ dans la partie application web en utilisant javascript pour lire le tableau JSON pour extraire le niveau de gaz en utilisant l 'objet HttpXmlRequest (est un objet charger de faire la communication entre les serveurs en utilisant le protocol tcp/ip)
+ 
+ puis nous avons la fonction getValue prend comme parametre le niveau de gaz 
+ puis il calcul le hauteur du couleur dans l'image du boutagaz (affichage du niveau de gaz )
+ si le niveau de gaz est iferieur de 10% une alert va executer .
+
+
+
+
